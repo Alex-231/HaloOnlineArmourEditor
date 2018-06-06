@@ -1,0 +1,107 @@
+﻿<Controls:MetroWindow x:Class="HaloOnlineArmourEditor.CustomizeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:HaloOnlineArmourEditor"
+        mc:Ignorable="d"
+        Title="Halo 3 Armour Customizer" Height="289" Width="525" ResizeMode="NoResize">
+    <Controls:MetroWindow.Resources>
+        <Storyboard x:Key="showColors">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,310,0" To="0,0,0,0" DecelerationRatio="0.8" Duration="0:0:0.25"/>
+        </Storyboard>
+        <Storyboard x:Key="hideColors">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,310,0" AccelerationRatio="0.8" Duration="0:0:0.25"/>
+        </Storyboard>
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="258*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="previewImage" HorizontalAlignment="Left" Height="239" VerticalAlignment="Top" Width="239" Grid.Column="1" Margin="10,10,0,0"/>
+        <Controls:SplitButton x:Name="helmetBox" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="100" Margin="148,10,0,0" SelectionChanged="UpdateConfigAndPreview"/>
+        <Controls:SplitButton x:Name="chestBox" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="100" Margin="148,41,0,0" SelectionChanged="UpdateConfigAndPreview"/>
+        <Controls:SplitButton x:Name="leftShoulderBox" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="100" Margin="148,72,0,0" SelectionChanged="UpdateConfigAndPreview"/>
+        <Controls:SplitButton x:Name="rightShoulderBox" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="100" Margin="148,103,0,0" SelectionChanged="UpdateConfigAndPreview"/>
+        <Label x:Name="helmetLbl" Content="Helmet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <Label x:Name="chestLbl" Content="Chest" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+        <Label x:Name="leftShoulderLbl" Content="Left Shoulder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
+        <Label x:Name="rightShoulderLbl" Content="Right Shoulder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,103,0,0"/>
+        <Label x:Name="primaryColorLbl" Content="Primary Color" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,160,0,0"/>
+        <Label x:Name="secondaryColorLbl" Content="Secondary Color" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,191,0,0"/>
+        <Label x:Name="detailColorLbl" Content="Detail Color" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,222,0,0"/>
+
+        <StackPanel Panel.ZIndex="2" Name="colorsMenu" Orientation="Horizontal" HorizontalAlignment="Right" Margin="-4,0,310,0" Grid.Column="0
+                    " Width="263">
+            <Border BorderBrush="AliceBlue" BorderThickness="0" Width="259" Background="#FF111111" Margin="0">
+                <Grid HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="239" Margin="10,10,0,0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Name="Steel" Fill="#FF282828" Height="24" VerticalAlignment="Top" StrokeThickness="3" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Silver" Fill="#FF7C7C7C" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="White" Fill="#FFC3C3C3" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="79" StrokeThickness="3" Grid.Column="2" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Red" Fill="#FF620B0B" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Mauve" Fill="#FFBD2B2B" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="1" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Salmon" Fill="#FFE24444" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="1" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Orange" Fill="#FFBC4D00" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="2" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Coral" Fill="#FFF4791F" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="2" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Peach" Fill="#FFFFA362" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="2" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Gold" Fill="#FFA77708" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="3" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Yellow" Fill="#FFDD9A08" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="3" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Pale" Fill="#FFFFBC3B" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="3" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Sage" Fill="#FF1F3602" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="4" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Green" Fill="#FF546E26" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="4" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Olive" Fill="#FFB3E164" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="4" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Teal" Fill="#FF0A3B3F" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="5" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Aqua" Fill="#FF178C95" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="5" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Cyan" Fill="#FF54DDDB" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="5" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Blue" Fill="#FF0B2156" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="6" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Cobalt" Fill="#FF1D4BBC" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="6" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Sapphire" Fill="#FF5D85EB" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="6" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Violet" Fill="#FF1D1052" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="7" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Orchid" Fill="#FF5438CF" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="7" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Lavender" Fill="#FFA18CFF" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="7" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Crimson" Fill="#FF460014" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="8" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="RudyWine" Fill="#FFAF0E46" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="8" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Pink" Fill="#FFFF4D8A" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="8" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Brown" Fill="#FF1C0D02" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="9" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Tan" Fill="#FF774D31" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="9" Grid.Column="1" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                    <Rectangle x:Name="Khaki" Fill="#FFC69069" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="80" StrokeThickness="3" Grid.Row="9" Grid.Column="2" Margin="0,0,-1,0" Stroke="Transparent" MouseDown="Color_MouseDown"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+        <Rectangle x:Name="primaryColorRect" Fill="#FFC69069" HorizontalAlignment="Left" Height="26" Stroke="Transparent" StrokeThickness="3" VerticalAlignment="Top" Width="101" Margin="148,160,0,0" MouseDown="primaryColorButton_MouseDown"/>
+        <Rectangle x:Name="secondaryColorRect" Fill="#FFC69069" HorizontalAlignment="Left" Height="26" Stroke="Transparent" StrokeThickness="3" VerticalAlignment="Top" Width="100" Margin="148,191,0,0" MouseDown="secondaryColorButton_MouseDown"/>
+        <Rectangle x:Name="detailColorRect" Fill="#FFC69069" HorizontalAlignment="Left" Height="26" Stroke="Transparent" StrokeThickness="3" VerticalAlignment="Top" Width="101" Margin="148,222,0,0" MouseDown="detailColorButton_MouseDown"/>
+    </Grid>
+    <!--<Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="Spartan" />
+            <Button Content="Elite" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>-->
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Name="Spartan" Content="Spartan" Click="RaceButton_Clicked"/>
+            <Button Name="Elite" Content="Elite" Click="RaceButton_Clicked"/>
+            <Button x:Name="randomizeBtn" Content="Randomize" Click="RamdomizeClicked"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+</Controls:MetroWindow>
